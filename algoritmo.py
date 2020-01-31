@@ -25,10 +25,12 @@ w_distancia = 0.85
 
 
 def seleccion(generacion):
+    
     # alpha selection
     alpha = []
     alpha_data = 100
     alpha_index = 0
+    fit_total=0
     for i in generacion:
         calificacion = fitness(generacion[i][0])
         generacion[i][1] = calificacion
@@ -38,10 +40,24 @@ def seleccion(generacion):
             alpha_index = i
     print("best  and minimum: ",alpha, "-", alpha_index)
     generacion.pop(alpha_index)
-    for x in generacion
-        
+    
+    # beta selection
+    fit_total= get_fit_total(generacion)
+    por = 0
+    beta_aux=[]
+    beta = []
+    for x in generacion:
+        aux = (generacion[x][1]/fit_total)*100
+        beta_aux.append([x,generacion[x][1],aux])
+        #print(generacion[x][1]/fit_total)
+    print(beta_aux)
+    
 
-
+def get_fit_total(gene):
+    fito = 0
+    for x in gene:
+        fito+=gene[x][1]
+    return fito
 
 def fitness(individuo):
     global w_distancia, w_historia, w_inventario,k1,k2
@@ -71,5 +87,5 @@ def crossover():
 
 
 if __name__ == "__main__":
-    #print(population[0])
     seleccion(population)
+    
