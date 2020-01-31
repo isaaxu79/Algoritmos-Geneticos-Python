@@ -1,9 +1,12 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import random
 
 cant_genes_ind = 2
 cant_tipo_gen = 10
 tienda = {1:[7,3,10], 2:[6,3,8], 3:[4,5,3], 4:[10,5,4], 5:[12,10,2], 6:[3,8,6], 7:[5,8,1], 8:[8,9,2], 9:[9,12,0], 10:[12,12,2]}
+
+# poblacion inicial
 population = {
   0:[[tienda[2],tienda[4]],0], 1:[[tienda[2],tienda[8]],0], 2:[[tienda[10],tienda[1]],0], 3:[[tienda[5],tienda[2]],0]
 , 4:[[tienda[10],tienda[6]],0], 5:[[tienda[9],tienda[5]],0], 6:[[tienda[2],tienda[3]],0], 7:[[tienda[6],tienda[3]],0], 8:[[tienda[1],tienda[5]],0]
@@ -15,7 +18,7 @@ population = {
 , 34:[[tienda[6],tienda[10]],0], 35:[[tienda[2],tienda[10]],0], 36:[[tienda[3],tienda[4]],0], 37:[[tienda[2],tienda[3]],0], 38:[[tienda[3],tienda[8]],0]
 , 39:[[tienda[5],tienda[2]],0] }
 
-
+# constantes para el calculos de fitness
 k1 = 1000
 k2 = 100
 # pesos
@@ -38,19 +41,26 @@ def seleccion(generacion):
             alpha_data = calificacion
             alpha = generacion[i]
             alpha_index = i
-    print("best  and minimum: ",alpha, "-", alpha_index)
+    #print("best and minimum: ",alpha, "-", alpha_index)
     generacion.pop(alpha_index)
     
     # beta selection
     fit_total= get_fit_total(generacion)
-    por = 0
     beta_aux=[]
     beta = []
+    gen_beta=[]
+    aux =0
     for x in generacion:
-        aux = (generacion[x][1]/fit_total)*100
+        aux += (generacion[x][1]/fit_total)*100
         beta_aux.append([x,generacion[x][1],aux])
-        #print(generacion[x][1]/fit_total)
-    print(beta_aux)
+    numeros = [random.uniform(0,100) for x in range(1)]
+    for c in beta_aux:
+        if numeros[0] < c[2]:
+            beta = c
+            break
+    gen_beta = generacion.get(beta[0])
+    #print("beta probable",gen_beta,beta[0])
+    return [alpha,gen_beta]
     
 
 def get_fit_total(gene):
@@ -58,6 +68,26 @@ def get_fit_total(gene):
     for x in gene:
         fito+=gene[x][1]
     return fito
+
+
+def generate_individuals():
+    arreglo = {}
+    for i in range(36):
+        var = i+4
+        tienda1 = random.randint(1, 10)
+        tienda2 = random.randint(1, 10)
+        if tienda1 == tienda2:
+            tienda2 = compare_change(tienda1,tienda2)
+        arreglo.update({var:[[tienda.get(tienda1),tienda.get(tienda2)],0]})
+    print(arreglo)
+        
+def compare_change(x,y):
+    y = random.randint(1, 10)
+    if y != x:
+        return y
+    else:
+        compare_change(x,y)
+
 
 def fitness(individuo):
     global w_distancia, w_historia, w_inventario,k1,k2
@@ -82,10 +112,14 @@ def ajuste_pesos():
 def mutacion():
     pass
 
-def crossover():
-    pass
+def crossover(alpha, beta):
+    off_spring_2 = [beta[0],alpha[1]]
+    off_spring_1 = [alpha[0],beta[1]]
+    print(off_spring_1)
+    print(off_spring_2)
 
 
 if __name__ == "__main__":
-    seleccion(population)
-    
+    the_best_gen = seleccion(population) # return [0] = alpha, [1] = beta
+    print(the_best_gen)
+    crossover(the_best_gen[0][0],the_best_gen[1][0])

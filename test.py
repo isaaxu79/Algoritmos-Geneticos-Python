@@ -8,8 +8,5 @@ for i in range(5):
     else:
         ga.update({var:[[1,1],0]})
 
-print(ga)
-ga.pop(7)
-print(ga)
-ex = ga.get(6)
-print(ex)
+ht = [1,2,3] == [1,1,3]
+print(ht)
