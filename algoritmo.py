@@ -25,10 +25,14 @@ w_distancia = 0.85
 
 
 def seleccion(generacion):
+    alpha = {}
+    alpha_data = 100
     for i in generacion:
-        print(generacion[i])
         calificacion = fitness(generacion[i][0])
         generacion[i][1] = calificacion
+        if(calificacion < alpha):
+            
+            
     
     print(generacion)
 
@@ -38,11 +42,11 @@ def fitness(individuo):
     inventario_1 = individuo[0][0]
     distancia_1 = individuo[0][1]
     historial_1 = individuo[0][2]
-    print("inventario: ", inventario_1, "distancia: ", distancia_1, "historial: ", historial_1)
+    #print("inventario: ", inventario_1, "distancia: ", distancia_1, "historial: ", historial_1)
     inventario_2 = individuo[1][0]
     distancia_2 = individuo[1][1]
     historial_2 = individuo[1][2]
-    print("inventario: ", inventario_2, "distancia: ", distancia_2, "historial: ", historial_2)
+    #print("inventario: ", inventario_2, "distancia: ", distancia_2, "historial: ", historial_2)
     ct1 = (k1+ (inventario_1*w_inventario) - (distancia_1*w_distancia) - (historial_1*w_historia))/k2
     ct2 = (k1+ (inventario_2*w_inventario) - (distancia_2*w_distancia) - (historial_2*w_historia))/k2
     return(ct1+ct2)
