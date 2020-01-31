@@ -25,16 +25,19 @@ w_distancia = 0.85
 
 
 def seleccion(generacion):
-    alpha = {}
+    # alpha selection
+    alpha = []
     alpha_data = 100
     for i in generacion:
         calificacion = fitness(generacion[i][0])
         generacion[i][1] = calificacion
-        if(calificacion < alpha):
-            
-            
+        if(calificacion < alpha_data):
+            alpha_data = calificacion
+            alpha = generacion[i]
     
-    print(generacion)
+    print("best  and minimum: ",alpha)
+    
+    
 
 
 def fitness(individuo):
@@ -65,5 +68,5 @@ def crossover():
 
 
 if __name__ == "__main__":
-    #print(population)
+    #print(population[0])
     seleccion(population)

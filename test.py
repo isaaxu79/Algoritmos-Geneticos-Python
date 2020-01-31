@@ -6,3 +6,5 @@ for i in range(5):
     ga.update({var:[[1,1],0]})
 
 print(ga)
+ga.pop(7)
+print(ga)
