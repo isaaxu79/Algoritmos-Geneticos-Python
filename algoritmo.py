@@ -30,7 +30,7 @@ def fitness(individuo):
     historial_2 = individuo[1][2]
     print("inventario: ", inventario_2, "distancia: ", distancia_2, "historial: ", historial_2)
     ct1 = (k1+ (inventario_1*w_inventario) - (distancia_1*w_distancia) - (historial_1*w_historia))/k2
-    ct2 = (k1+ (inventario_1*w_inventario) - (distancia_1*w_distancia) - (historial_1*w_historia))/k2
+    ct2 = (k1+ (inventario_2*w_inventario) - (distancia_2*w_distancia) - (historial_2*w_historia))/k2
     print(ct1+ct2)
     
 def ajuste_pesos():
