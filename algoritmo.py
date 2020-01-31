@@ -16,8 +16,12 @@ w_distancia = 0.85
 
 def seleccion(generacion):
     for i in generacion:
-        print(generacion[i][0])
+        print(generacion[i])
         calificacion = fitness(generacion[i][0])
+        generacion[i][1] = calificacion
+    
+    print(generacion)
+
 
 def fitness(individuo):
     global w_distancia, w_historia, w_inventario,k1,k2
@@ -31,7 +35,7 @@ def fitness(individuo):
     print("inventario: ", inventario_2, "distancia: ", distancia_2, "historial: ", historial_2)
     ct1 = (k1+ (inventario_1*w_inventario) - (distancia_1*w_distancia) - (historial_1*w_historia))/k2
     ct2 = (k1+ (inventario_2*w_inventario) - (distancia_2*w_distancia) - (historial_2*w_historia))/k2
-    print(ct1+ct2)
+    return(ct1+ct2)
     
 def ajuste_pesos():
     global w_distancia, w_historia, w_inventario
