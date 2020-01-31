@@ -17,9 +17,8 @@ w_distancia = 0.85
 def seleccion():
     pass
 
-def fitness(data):
-    global w_distancia, w_historia, w_inventario,k1,k2
-    
+def fitness(g):
+    global w_distancia, w_historia, w_inventario,k1,k2    
     ct1 = (k1+ (inventario*w_inventario) - (distancia*w_distancia) - (historia*w_historia))/k2
     ct2 = (k1+ (10*w_inventario) - (5*w_distancia) - (4*w_historia))/k2
     print(ct1+ct2)
@@ -38,4 +37,4 @@ def crossover():
 
 
 if __name__ == "__main__":
-    fitness(1)
+    print(population[0])
