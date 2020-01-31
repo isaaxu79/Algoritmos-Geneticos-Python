@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import random
 
 cant_genes_ind = 2
 cant_tipo_gen = 10
@@ -38,9 +39,27 @@ def seleccion(generacion):
             alpha_index = i
     print("best  and minimum: ",alpha, "-", alpha_index)
     generacion.pop(alpha_index)
-    for x in generacion
+    # for x in generacion
         
 
+
+def generate_individuals():
+    arreglo = {}
+    for i in range(36):
+        var = i+4
+        tienda1 = random.randint(1, 10)
+        tienda2 = random.randint(1, 10)
+        if tienda1 == tienda2:
+            tienda2 = compare_change(tienda1,tienda2)
+        arreglo.update({var:[[tienda.get(tienda1),tienda.get(tienda2)],0]})
+    print(arreglo)
+        
+def compare_change(x,y):
+    y = random.randint(1, 10)
+    if y != x:
+        return y
+    else:
+        compare_change(x,y)
 
 
 def fitness(individuo):
@@ -72,4 +91,5 @@ def crossover():
 
 if __name__ == "__main__":
     #print(population[0])
-    seleccion(population)
+    #seleccion(population)
+    generate_individuals()
