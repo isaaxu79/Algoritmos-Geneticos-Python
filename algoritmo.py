@@ -105,7 +105,7 @@ def ajuste_pesos():
     w_distancia+=(0.015)
 
 def mutacion(son1, son2):
-    pass
+    
 
 def crossover(alpha, beta):
     off_spring_2 = [beta[0],alpha[1]]
