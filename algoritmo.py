@@ -4,7 +4,17 @@ import numpy as np
 cant_genes_ind = 2
 cant_tipo_gen = 10
 tienda = {1:[7,3,10], 2:[6,3,8], 3:[4,5,3], 4:[10,5,4], 5:[12,10,2], 6:[3,8,6], 7:[5,8,1], 8:[8,9,2], 9:[9,12,0], 10:[12,12,2]}
-population = {0:[[tienda[2],tienda[4]],0], 1:[[tienda[2],tienda[8]],0]}
+population = {
+  0:[[tienda[2],tienda[4]],0], 1:[[tienda[2],tienda[8]],0], 2:[[tienda[10],tienda[1]],0], 3:[[tienda[5],tienda[2]],0]
+, 4:[[tienda[10],tienda[6]],0], 5:[[tienda[9],tienda[5]],0], 6:[[tienda[2],tienda[3]],0], 7:[[tienda[6],tienda[3]],0], 8:[[tienda[1],tienda[5]],0]
+, 9:[[tienda[1],tienda[4]],0], 10:[[tienda[6],tienda[10]],0], 11:[[tienda[5],tienda[8]],0], 12:[[tienda[2],tienda[10]],0], 13:[[tienda[4],tienda[9]],0]
+, 14:[[tienda[3],tienda[10]],0], 15:[[tienda[1],tienda[9]],0], 16:[[tienda[2],tienda[4]],0], 17:[[tienda[9],tienda[6]],0], 18:[[tienda[2],tienda[10]],0]
+, 19:[[tienda[9],tienda[6]],0], 20:[[tienda[5],tienda[4]],0], 21:[[tienda[6],tienda[2]],0], 22:[[tienda[5],tienda[6]],0], 23:[[tienda[9],tienda[3]],0]
+, 24:[[tienda[1],tienda[2]],0], 25:[[tienda[5],tienda[4]],0], 26:[[tienda[2],tienda[10]],0], 27:[[tienda[9],tienda[7]],0], 28:[[tienda[9],tienda[8]],0]
+, 29:[[tienda[6],tienda[3]],0], 30:[[tienda[5],tienda[6]],0], 31:[[tienda[2],tienda[10]],0], 32:[[tienda[2],tienda[10]],0], 33:[[tienda[5],tienda[7]],0]
+, 34:[[tienda[6],tienda[10]],0], 35:[[tienda[2],tienda[10]],0], 36:[[tienda[3],tienda[4]],0], 37:[[tienda[2],tienda[3]],0], 38:[[tienda[3],tienda[8]],0]
+, 39:[[tienda[5],tienda[2]],0] }
+
 
 k1 = 1000
 k2 = 100
