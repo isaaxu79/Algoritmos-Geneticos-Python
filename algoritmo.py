@@ -59,7 +59,6 @@ def seleccion(generacion):
             beta = c
             break
     gen_beta = generacion.get(beta[0])
-    #print("beta probable",gen_beta,beta[0])
     return [alpha,gen_beta]
     
 
