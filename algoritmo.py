@@ -28,16 +28,19 @@ def seleccion(generacion):
     # alpha selection
     alpha = []
     alpha_data = 100
+    alpha_index = 0
     for i in generacion:
         calificacion = fitness(generacion[i][0])
         generacion[i][1] = calificacion
         if(calificacion < alpha_data):
             alpha_data = calificacion
             alpha = generacion[i]
-    
-    print("best  and minimum: ",alpha)
-    
-    
+            alpha_index = i
+    print("best  and minimum: ",alpha, "-", alpha_index)
+    generacion.pop(alpha_index)
+    for x in generacion
+        
+
 
 
 def fitness(individuo):
