@@ -26,7 +26,6 @@ w_inventario = 0.5
 w_historia = 0.25
 w_distancia = 0.85
 
-
 def seleccion(generacion):
     # alpha selection
     alpha = []
@@ -59,13 +58,11 @@ def seleccion(generacion):
     gen_beta = generacion.get(beta[0])
     return [alpha,gen_beta]
     
-
 def get_fit_total(gene):
     fito = 0
     for x in gene:
         fito+=gene[x][1]
     return fito
-
 
 def generate_individuals():
     arreglo = {}
@@ -84,7 +81,6 @@ def compare_change(x,y):
         return y
     else:
         compare_change(x,y)
-
 
 def fitness(individuo):
     global w_distancia, w_historia, w_inventario,k1,k2
@@ -105,11 +101,34 @@ def ajuste_pesos():
     w_distancia+=(0.015)
 
 def mutacion(son1, son2):
-    pass
+    ar={}
+    rand = random.randrange(10)
+    rand2 = random.randrange(10)
+    if rand > 6: 
+        son1[0][0] = tienda.get(rand)
+    if son1[0][0] == son1[0][1]:
+        rand = random.randrange(10)
+        son1[0][1] = tienda.get(rand)
+    if rand2 > 6: 
+        son2[0][0] = tienda.get(rand2)
+    if son2[0][0] == son2[0][1]:
+        rand2 = random.randrange(10)
+        son2[0][1] = tienda.get(rand2)
+    arreglo = son1 + son2
+    print("------------------------------------->")
+    print(arreglo)
+    return arreglo
+    
+
+
+
 
 def crossover(alpha, beta):
     off_spring_2 = [beta[0],alpha[1]]
     off_spring_1 = [alpha[0],beta[1]]
+    print(off_spring_2)
+    print("------------------------")
+    print(off_spring_1)
     mutacion(off_spring_1,off_spring_2)
     return [off_spring_1,off_spring_2, alpha, beta]
 
